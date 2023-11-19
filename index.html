@@ -91,7 +91,7 @@
           <ul class="theme-list">
             <li><b>From:</b> Aceh Utara, ID</li>
             <li><b>Lives In:</b> Aceh Tamiang, ID</li>
-            <li><b>Age:</b> 23</li>
+            <li><b>Age:</b> <span id="hasilUmur"></span></li>
             <li><b>Gender:</b> Male</li>
           </ul>
           <a href="assets/pdf/cvsayuti.pdf" class="btn btn-theme-outline" download>Download CV</a>
@@ -411,6 +411,22 @@
     n =  new Date();
     y = n.getFullYear();
     document.getElementById("date").innerHTML = y;
+
+    function hitungUmur(tanggalLahir) {
+        var tanggalLahirObj = new Date(tanggalLahir);
+        var tanggalSekarang = new Date();
+        var selisihTahun = tanggalSekarang.getFullYear() - tanggalLahirObj.getFullYear();
+        if (
+            tanggalSekarang.getMonth() < tanggalLahirObj.getMonth() ||
+            (tanggalSekarang.getMonth() === tanggalLahirObj.getMonth() &&
+                tanggalSekarang.getDate() < tanggalLahirObj.getDate())
+        ) {
+            selisihTahun--;
+        }
+
+        document.getElementById("hasilUmur").innerHTML = selisihTahun;
+    }
+    hitungUmur("2000-03-30");
   </script>
   
 </body>
